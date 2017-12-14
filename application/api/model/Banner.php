@@ -9,17 +9,13 @@
 namespace app\api\model;
 
 
+use app\api\lib\exception\BannerMissException;
 use think\Exception;
 
 class Banner{
 
     public static function getBannerByID($id){
-        try{
-            1/0;
-        }catch (Exception $e){
-//            var_dump($e->getMessage());
-        }
 
-        return 'banner info for $id';
+        return null;
     }
 }

@@ -8,9 +8,11 @@
 
 namespace app\api\lib\exception;
 
-
 use think\Exception;
 
 class BaseException extends Exception {
 
+    public $code = 400;
+    public $msg  = '通用参数错误';
+    public $errorCode = '999';
 }

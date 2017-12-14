@@ -9,6 +9,7 @@
 namespace app\api\controller\v1;
 
 
+use app\api\lib\exception\BannerMissException;
 use app\api\lib\validate\IDMustBeInteger;
 use app\api\lib\validate\isPositiveInteger;
 use app\api\model\Banner as BannerModel;
@@ -18,6 +19,9 @@ class Banner{
     public function getBanner($id){
         (new IDMustBeInteger())->goCheck();
         $banner = BannerModel::getBannerByID($id);
-        return 'Verification passed';
+        if(!$banner){
+            throw new BannerMissException();
+        }
+        return $banner;
     }
 }
