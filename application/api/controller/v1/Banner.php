@@ -16,12 +16,17 @@ use app\api\model\Banner as BannerModel;
 
 class Banner{
 
+    /**
+     * @param $id
+     * @return null
+     * @throws BannerMissException
+     */
     public function getBanner($id){
         (new IDMustBeInteger())->goCheck();
         $banner = BannerModel::getBannerByID($id);
         if(!$banner){
             throw new BannerMissException();
         }
-        return $banner;
+        return json($banner);
     }
 }

@@ -9,7 +9,7 @@
 namespace app\api\lib\validate;
 
 
-use think\Exception;
+use app\api\lib\exception\ParamException;
 use think\Request;
 use think\Validate;
 
@@ -17,13 +17,14 @@ class BaseValidate extends Validate {
 
     public function goCheck(){
         $data = Request::instance()->param();
-        $result = $this->check($data);
 
+        $result = $this->check($data);
         if($result){
             return true;
         }else{
-            throw new Exception('ID必须是正整数...');
-//            var_dump($this->error);
+            throw new ParamException([
+                'msg' => $this->error
+            ]);
         }
     }
 }

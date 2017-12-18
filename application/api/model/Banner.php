@@ -10,12 +10,14 @@ namespace app\api\model;
 
 
 use app\api\lib\exception\BannerMissException;
+use think\Db;
 use think\Exception;
 
 class Banner{
 
     public static function getBannerByID($id){
 
-        return null;
+        $result = Db::query('select * from banner_item where banner_id=?', [$id]);
+        return $result;
     }
 }
