@@ -2,13 +2,11 @@
 
 namespace app\api\model;
 
-use think\Model;
+class Image extends BaseModel {
 
-class Image extends Model{
+    protected $hidden = ['from', 'update_time', 'delete_time'];
 
-    protected $hidden = ['id', 'from', 'update_time', 'delete_time'];
-
-    public function getUrlAttr($value){
-        $c = $value;
+    public function getUrlAttr($value, $data){
+        return $this->imgUrl($value, $data);
     }
 }

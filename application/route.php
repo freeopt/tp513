@@ -11,4 +11,7 @@
 
 use think\Route;
 
-Route::get('banner/:id', 'api/v1.Banner/getBanner');
+Route::get('api/:version/banner/:id', 'api/:version.Banner/getBanner');
+
+Route::get('api/:version/theme/:id', 'api/:version.Theme/getTheme');
+Route::get('api/:version/themes/:ids', 'api/:version.Theme/getThemes');

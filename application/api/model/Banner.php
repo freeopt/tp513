@@ -9,9 +9,7 @@
 namespace app\api\model;
 
 
-use think\Model;
-
-class Banner extends Model {
+class Banner extends BaseModel {
 
     protected $hidden = ['id', 'update_time', 'delete_time'];
 
@@ -20,7 +18,7 @@ class Banner extends Model {
     }
 
     public static function getBannerByID($id){
-        $result = self::with(['items', 'items.img'])->find();
+        $result = self::with(['items', 'items.img'])->find($id);
         return $result;
     }
 }

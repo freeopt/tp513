@@ -27,4 +27,28 @@ class BaseValidate extends Validate {
             ]);
         }
     }
+
+    //验证ID是否为正整数
+    protected function isPositiveInt( $value, $rule='', $data='', $field='' ){
+        if( is_numeric($value) && is_int($value + 0) && ($value + 0) > 0 ){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //验证IDS是否为逗号分隔的正整数集合
+    protected function checkIDs($value){
+        $values = explode(',', $value);
+
+        if(empty($values)){
+            return false;
+        }
+        foreach ($values as $id) {
+            if(!$this->isPositiveInt($id)){
+                return false;
+            }
+        }
+        return true;
+    }
 }
