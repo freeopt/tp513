@@ -12,14 +12,24 @@ class Theme extends BaseModel {
     public function headImg(){
         return $this->belongsTo('image', 'head_img_id', 'id');
     }
-    //查询单个主题
-    public static function getThemeByID($id){
-        $result = self::with(['topicImg', 'headImg'])->find($id);
-        return $result;
+    public function products(){
+        return $this->belongsToMany('product', 'theme_product', 'product_id', 'theme_id');
     }
+
+    //查询单个主题
+//    public static function getThemeByID($id){
+//        $result = self::with(['topicImg', 'headImg'])->find($id);
+//        return $result;
+//    }
     //查询单个或多个主题
     public static function getThemesByIDs($ids){
         $result = self::with('topicImg,headImg')->select($ids);
+        return $result;
+    }
+
+    //查询主题商品
+    public static function getComplexOneByID($id){
+        $result = self::with('products,topicImg,headImg')->order('id desc')->find($id);
         return $result;
     }
 }

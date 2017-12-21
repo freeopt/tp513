@@ -16,21 +16,21 @@ use app\api\model\Theme as ThemeModel;
 
 class Theme{
 
-    public function getTheme($id){
+    public function getTheme($ids = ''){
+        (new IDConllection())->goCheck();
+        $themes = ThemeModel::getThemesByIDs($ids);
+        if($themes->isEmpty()){
+            throw new MissException();
+        }
+        return $themes;
+    }
+
+    public function getComplexOne($id){
         (new IDMustBeInteger())->goCheck();
-        $theme = ThemeModel::getThemeByID($id);
+        $theme = ThemeModel::getComplexOneByID($id);
         if(!$theme){
             throw new MissException();
         }
         return $theme;
-    }
-
-    public function getThemes($ids = ''){
-        (new IDConllection())->goCheck();
-        $themes = ThemeModel::getThemesByIDs($ids);
-        if(!$themes){
-            throw new MissException();
-        }
-        return $themes;
     }
 }

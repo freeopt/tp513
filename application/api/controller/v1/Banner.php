@@ -15,7 +15,7 @@ use app\api\lib\validate\isPositiveInteger;
 use app\api\model\Banner as BannerModel;
 use think\Model;
 
-class Banner extends Model {
+class Banner {
 
     /**
      * @param $id
