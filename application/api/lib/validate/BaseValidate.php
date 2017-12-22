@@ -37,6 +37,14 @@ class BaseValidate extends Validate {
         }
     }
 
+    //验证ID是非负整数
+    protected function isNotNegativeInt($value){
+        if(is_numeric($value) && is_int($value + 0) && ($value + 0) >= 0){
+            return true;
+        }
+        return false;
+    }
+
     //验证IDS是否为逗号分隔的正整数集合
     protected function checkIDs($value){
         $values = explode(',', $value);

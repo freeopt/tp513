@@ -15,6 +15,9 @@ class Theme extends BaseModel {
     public function products(){
         return $this->belongsToMany('product', 'theme_product', 'product_id', 'theme_id');
     }
+//    public function products(){
+//        return $this->belongsToMany('product', 'theme_product', 'theme_id', 'product_id');
+//    }
 
     //查询单个主题
 //    public static function getThemeByID($id){

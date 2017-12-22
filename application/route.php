@@ -18,4 +18,7 @@ Route::get('api/:version/theme', 'api/:version.Theme/getTheme');
 Route::get('api/:version/theme/:id', 'api/:version.Theme/getComplexOne');
 
 //Route::get('api/:version/product/:id', 'api/:version.Product/getProductOne');
-Route::get('api/:version/product/list', 'api/:version.Product/getProductList');
+Route::get('api/:version/product/np_list', 'api/:version.Product/getProductList');
+Route::get('api/:version/product/cp_list', 'api/:version.Product/getProductInCategory');
+
+Route::get('api/:version/category', 'api/:version.Category/getCategory');

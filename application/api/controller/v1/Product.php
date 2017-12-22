@@ -36,4 +36,15 @@ class product{
         $list = $list->hidden(['summary']);
         return $list;
     }
+
+    //获取分类商品
+    public function getProductInCategory($id){
+        (new IDMustBeInteger())->goCheck();
+        $result = ProductModel::getProductsByCID($id);
+        if($result->isEmpty()){
+            throw new MissException(['msg' => '该分类下无商品']);
+        }
+        $result = $result->hidden(['summary']);
+        return $result;
+    }
 }
