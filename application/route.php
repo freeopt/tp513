@@ -22,3 +22,5 @@ Route::get('api/:version/product/np_list', 'api/:version.Product/getProductList'
 Route::get('api/:version/product/cp_list', 'api/:version.Product/getProductInCategory');
 
 Route::get('api/:version/category', 'api/:version.Category/getCategory');
+
+Route::post('api/:version/token/user', 'api/:version.Token/getToken');

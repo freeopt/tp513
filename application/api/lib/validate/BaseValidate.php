@@ -45,6 +45,14 @@ class BaseValidate extends Validate {
         return false;
     }
 
+    //验证code不能为空
+    protected function isNotEmpty($value){
+        if(empty($value)){
+            return false;
+        }
+        return true;
+    }
+
     //验证IDS是否为逗号分隔的正整数集合
     protected function checkIDs($value){
         $values = explode(',', $value);
