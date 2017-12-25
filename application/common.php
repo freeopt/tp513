@@ -30,3 +30,14 @@
         curl_close($ch);
         return $file_contents;
     }
+
+    function getRandChars($length = 32){
+        $str    = null;
+        $strPol = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        $max    = strlen($strPol - 1);
+
+        for($i=0; $i<$length; $i++){
+            $str .= $strPol[rand(0, $max)];
+        }
+        return $str;
+    }

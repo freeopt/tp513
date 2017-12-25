@@ -11,7 +11,7 @@ namespace app\api\lib\exception;
 
 class WeChatException extends BaseException {
 
-    protected $code = 400;
-    protected $msg  = '微信接口调用失败';
-    protected $errorCode = 999;
+    public $code = 400;
+    public $msg  = '微信接口调用失败';
+    public $errorCode = 999;
 }
