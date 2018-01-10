@@ -17,8 +17,7 @@ class BaseValidate extends Validate {
 
     public function goCheck(){
         $data = Request::instance()->param();
-
-        $result = $this->check($data);
+        $result = $this->batch()->check($data);
         if($result){
             return true;
         }else{
@@ -66,5 +65,17 @@ class BaseValidate extends Validate {
             }
         }
         return true;
+    }
+
+    //过滤非法字段
+    public function getDataByRule($arr){
+        if( array_key_exists('user_id', $arr) | array_key_exists('uid', $arr) ){
+            throw new ParamException(['msg'=>'参数包含非法字段']);
+        }
+        $newArr = [];
+        foreach ($this->rule as $key=>$value) {
+            $newArr[$key] = $arr[$key];
+        }
+        return $newArr;
     }
 }
