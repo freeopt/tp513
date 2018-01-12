@@ -36,9 +36,9 @@ class Order extends BaseController {
         $products = input('post.data/a');
         $uid = UserToken::getCurrentUID();
 
-        //检查商品库存数量
+        //检查商品库存数量,生成订单
         $order = new OrderService();
         $orderStatus = $order->place($uid, $products);
-        var_dump($orderStatus);
+        return $orderStatus;
     }
 }
